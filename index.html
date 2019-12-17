@@ -35,16 +35,15 @@
 
                 <!-- Start input group -->
                 <div class="input-group mb-3"> 
-                    <input type="text" class="form-control" placeholder="City name..." 
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button" id="button-addon2"><i class="far fa-search"></i></button>
+                    <input id="searchTerm" type="text" class="form-control" placeholder="City name..." class="input-group-append">
+                    <button id="searchBtn" class="btn btn-primary" type="button" id="button-addon2"><i class="far fa-search"></i></button>
                 </div>
                 <!-- End input group -->   
 
                 <!-- Start card -->
                 <div class="card"> 
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cleveland</li>
+                        <li class="list-group-item"></li>
                     </ul>
                 </div> 
                 <!-- End card -->
@@ -53,18 +52,18 @@
 
             <!-- Start column -->
             <div class="col-lg-9"> 
-                <div class="mt-4">
+                <div id="currentCity" class="mt-4">
 
                     <!-- Start card -->
                     <div class="card"> 
                         <div class="card-body">
-                          <h5 class="card-title">Cleveland (12/15/2019)
+                          <h5 id="cityName" class="card-title">
                               <img src="" alt="">
                           </h5>
-                          <p class="card-text">Temperature: </p>
-                          <p class="card-text">Humidity: </p>
-                          <p class="card-text">Wind Speed: </p>
-                          <p class="card-text">UV Index: </p>
+                          <p class="card-text"></p>
+                          <p class="card-text"></p>
+                          <p class="card-text"></p>
+                          <p class="card-text"></p>
                         </div>
                     </div> 
                     <!-- End card -->
@@ -104,7 +103,7 @@
     </div> 
     <!-- End container -->
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
