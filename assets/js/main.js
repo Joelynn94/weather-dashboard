@@ -19,7 +19,6 @@ $("#searchBtn").on("click", function() {
 
         console.log(response.name)
         console.log(response.weather[0].icon)
-        console.log(response.weather.main);
 
         let tempF = (response.main.temp - 273.15) * 1.80 + 32;
         console.log(Math.floor(tempF))
@@ -38,15 +37,14 @@ $("#searchBtn").on("click", function() {
     let tempF = (response.main.temp - 273.15) * 1.80 + 32;
     tempF = Math.floor(tempF);
 
-    const cardBody = $(".card-body");
+    const cardBody = $(".current-city-body");
     const city = $("#cityName").text(response.name);
-    const temp = $("<p>").addClass("card-text").text("Temperature: " + tempF + " °F");
-    const humid = $("<p>").addClass("card-text").text("Humidity: " + response.main.humidity + "%");
-    const wind = $("<p>").addClass("card-text").text("Wind Speed: " + response.wind.speed + " MPH");
+    const temp = $("<p>").addClass("current-city-text").text("Temperature: " + tempF + " °F");
+    const humid = $("<p>").addClass("current-city-text").text("Humidity: " + response.main.humidity + "%");
+    const wind = $("<p>").addClass("current-city-text").text("Wind Speed: " + response.wind.speed + " MPH");
 
     // add to page
     cardBody.append(city, temp, humid, wind);
-    $("#currentCity").append(card);
 
   }
 
