@@ -4,6 +4,8 @@ const apiKey = "&appid=afaa8eea1769b4359fd8e07b2efcefbd";
 
 const date = new Date();
 
+// Number(obj.dt_txt.split('-')[2].split(' ')[0]);
+
 
 $("#searchBtn").on("click", function() {
     // get the value of the input from user
@@ -35,25 +37,23 @@ $("#searchBtn").on("click", function() {
 
       getCurrentConditions(response);
       getCurrentForecast(response);
+      makeList();
 
     })
   });
-
-  $(".list").on("click", function(city){
-
-  })
 
   function makeList() {
     let listItem = $("<li>").addClass("list-group-item").text(city);
     $(".list").append(listItem);
   }
 
-
   function getCurrentConditions (response) {
 
     // get the temperature and convert to fahrenheit 
     let tempF = (response.main.temp - 273.15) * 1.80 + 32;
     tempF = Math.floor(tempF);
+
+    $('#currentCity').empty();
 
     // get and set the content 
     const card = $("<div>").addClass("card");
@@ -81,9 +81,15 @@ function getCurrentForecast (response) {
   }).then(function (response){
 
     console.log(response)
+    console.log(response.dt)
+    $('#forecast').empty();
 
     // variable to hold response.list
     let results = response.list;
+    
+    //declare start date to check against
+    // startDate = 20
+    //have end date, endDate = startDate + 5
 
     for (let i = 0; i < results.length; i++) {
 
@@ -91,7 +97,7 @@ function getCurrentForecast (response) {
       let temp = (results[i].main.temp - 273.15) * 1.80 + 32;
       let tempF = Math.floor(temp);
 
-      const card = $("<div>").addClass("card col-md-4 bg-primary text-white");
+      const card = $("<div>").addClass("card col-md-4 ml-2 bg-primary text-white");
       const cardBody = $("<div>").addClass("card-body p-3 forecastBody")
       const cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
       const temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
